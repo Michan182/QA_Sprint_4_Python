@@ -25,7 +25,7 @@ class TestBooksCollector:
         """
         collector = BooksCollector()
         collector.add_new_book(book)
-        assert collector.books_genre.get(book) is None
+        assert collector.get_book_genre(book) is None
 
     @pytest.mark.parametrize('book', ['B', 'Bo', "Очень длинное название книги, которое п","Очень длинное название книги, которое пр"])
     def test_add_new_book_add_book_len_1_2_39_40_symbols_is_added(self, book):
@@ -70,9 +70,8 @@ class TestBooksCollector:
 
     @pytest.mark.parametrize('book, genre', [
         ('BookForChildren', 'Мультфильмы'),
-        ('BookForChildren1', 'Мультфильмы'),
-        ('BookForChildren2', 'Мультфильмы'),
-        ('BookForChildren3', 'Мультфильмы')]
+        ('BookForChildren1', 'Комедии'),
+        ('BookForChildren2', 'Фантастика')]
                              )
     def test_get_books_for_children_have_got_books_for_children(self, book, genre):
         """
